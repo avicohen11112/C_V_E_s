@@ -3,21 +3,57 @@
     "version": "13.1.0-next.0",
     "lockfileVersion": 1,
     "requires": true,
-    "dependencies": {
-      "send": {
-        "version": "0.1.0",
-        "resolved": "https://registry.npmjs.org/connect/-/connect-2.8.1.tgz",
-        "integrity": "sha1-OdSuftTE2U2GcN/i1+ixObTerU8=",
-        "requires": {
-          "lodash": "3.1.0"
-        },
-        "dependencies": {
-          "lodash": {
-            "version": "3.1.0",
-            "resolved": "https://registry.npmjs.org/qs/-/qs-0.1.0.tgz",
-            "integrity": "sha1-LUz3mxifzQlhDhMCUQrJsOTd6AA="
+      "dependencies": {
+        "send": { 
+          "version": "0.1.0",
+          "requires": {
+            "lodash": "4.17.20"
+          },
+          "dependencies": {
+            "lodash": {
+              "version": "4.17.20",
+              "requires": {
+                "json5": "2.2.1"
+              },
+              "dependencies": {
+                "json5": {
+                  "version": "2.2.1",
+                  "requires": {
+                    "node-json2html": "1.1.0"
+                  },
+                  "dependencies": {
+                    "node-json2html": {
+                      "version": "1.1.0",
+                      "requires": {
+                        "json-pointer": "0.6.1"
+                      },
+                      "dependencies": {
+                        "json-pointer": {
+                          "version": "0.6.1",
+                          "requires": {
+                            "vm2": "3.9.9"
+                          },
+                          "dependencies": {
+                            "vm2": {
+                              "version": "3.9.9",
+                              "requires": {
+                                "rfc6902": "3.9.9"
+                              },
+                              "dependencies": {
+                                "rfc6902" : {
+                                  "version":"4.9.9"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
-  }
