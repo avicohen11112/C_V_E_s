@@ -1,0 +1,23 @@
+{
+    "name": "angular-srcs",
+    "version": "13.1.0-next.0",
+    "lockfileVersion": 1,
+    "requires": true,
+    "dependencies": {
+      "send": {
+        "version": "0.1.0",
+        "resolved": "https://registry.npmjs.org/connect/-/connect-2.8.1.tgz",
+        "integrity": "sha1-OdSuftTE2U2GcN/i1+ixObTerU8=",
+        "requires": {
+          "lodash": "3.1.0"
+        },
+        "dependencies": {
+          "lodash": {
+            "version": "3.1.0",
+            "resolved": "https://registry.npmjs.org/qs/-/qs-0.1.0.tgz",
+            "integrity": "sha1-LUz3mxifzQlhDhMCUQrJsOTd6AA="
+          }
+        }
+      }
+    }
+  }
