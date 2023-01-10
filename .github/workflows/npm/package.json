@@ -1,0 +1,35 @@
+{
+  "name": "spectral",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Dotan Nahum <jondotan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "gen": "quicktype -o hub/rule_summary.go --src-lang json command-output-ipc-sample.json",
+    "build:bundle-rules": "yarn ts-node tools/rule-bundler/rule-bundler.ts && mv rules1.json rules2.json rules3.json rules4.json src/spectral-core/src/static/ &&  touch -m src/spectral-core/src/configuration/config.rs",
+    "build:local": "yarn build:bundle-rules && cd src && ./build-default.sh",
+    "build:ml": "cd src/spectral-ml && yarn build:ml",
+    "release": "./build-cross-release.sh",
+    "test": "cd src && cargo build --release --features test-mode && cp target/release/spectral /usr/local/bin && cd ../e2e && yarn test",
+    "test:e2e": "cd e2e && yarn test",
+    "test:ml": "pip install -r src/spectral-ml/e2e/python-parity/requirements.txt && cd src/spectral-ml && cargo test -- --nocapture",
+    "test:integration": "cd e2e && yarn test"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.623.0",
+    "checksum": "^0.1.1",
+    "got": "^9.5.0",
+    "jest-specific-snapshot": "^4.0.0",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.11",
+    "quicktype": "^15.0.167",
+    "shelljs": "^0.8.3",
+    "tar": "^6.0.1",
+    "ts-node": "^8.3.0"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "globby": "^9.2.0",
+    "exceljs": "^4.3.0"
+  }
+}

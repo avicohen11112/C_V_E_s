@@ -1,0 +1,71 @@
+[package]
+name = "spectral"
+version = "1.9.142"
+authors = ["Dotan Nahum <jondotan@gmail.com>"]
+edition = "2018"
+
+
+[features]
+# default=['jemallocator']
+native-alloc=[]
+yara-matcher=['spectral_engine/yara-matcher']
+jwalk-walk=['spectral_engine/jwalk-walk']
+test-mode=['spectral_reporters/test-mode', 'spectral_engine/test-mode', 'spectral_gox/test-mode', 'spectral_account/test-mode']
+no-opa=['spectral_engine/no-opa']
+
+[workspace]
+members = ["spectral-core", "spectral-reporters", "spectral-git", "spectral-ml",  "spectral-gox", "spectral-codeprint", "spectral-coderisk", "spectral-ohai", "spectral-contracts", "spectral-unpack"]
+# note(m1): removed "binding-node/native" from members because it is too old of node. needs to re-do with recent neon
+
+[profile.release]
+strip = "symbols"
+
+
+[profile.dev]
+opt-level = 0
+debug = true
+rpath = false
+lto = false
+debug-assertions = true
+codegen-units = 16
+panic = 'unwind'
+incremental = true
+overflow-checks = true
+
+[dependencies]
+env_logger = "0.6.1"
+log = "0.4.11"
+clap = { version ="*", features =[ ], default-features=false }
+handlebars = "*"
+reqwest = "0.9.24"
+dialoguer = "*"
+console = "*"
+serde_json ="1.0.57"
+serde = "*"
+url ="*"
+chrono = "*"
+uuid ="*"
+regex = { version="1.4.5"}
+bytefmt = { version="0.1.7"}
+const-str = "0.4.3"
+dunce = "1.0.3"
+
+spectral_core={ version="*", path="./spectral-core"}
+spectral_reporters={ version="*", path="./spectral-reporters"}
+spectral_http={ optional=true, version="*", path="./spectral-http"}
+spectral_engine={ version="*", path="./spectral-engine"}
+spectral_git={ version="*", path="./spectral-git"}
+spectral_gox={ version="*", path="./spectral-gox"}
+spectral_containers={ version="*", path="./spectral-containers"}
+spectral_codeprint={ version="*", path="./spectral-codeprint"}
+spectral_coderisk={ version="*", path="./spectral-coderisk"}
+spectral_ohai={ version="*", path="./spectral-ohai"}
+spectral_k8s={ version="*", path="./spectral-k8s"}
+spectral_contracts = {version="*", path="./spectral-contracts"}
+spectral_account={ version="*", path="./spectral-account"}
+
+jsonrpc-stdio-server = "14.0"
+jsonrpc-tcp-server = "14.0"
+licensed={ path = "./licensed" }
+
+# jemallocator = { version="0.3.0", optional= true }
